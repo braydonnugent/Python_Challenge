@@ -38,15 +38,16 @@ with open(budget_csv_path, 'r') as csv_file:    #making the data source a readab
 average_change = total_change/(months-1)    #creates overall average change in profits across the entire data sets timeline
 average_change = round(average_change,2)    #rounds the overall average change to 2 decimal places for more appropriate display of data
 
-#final display template
+#create data display template & have it print on attached 'analysis.txt' file. Print note to notify code runner what has happened.
+output_file = "analysis.txt"
 
-print("")
-print("Financial Analysis")
-print("")
-print("------------------------------")
-print("")
-print("Total Months:",months)
-print("Total: $",total_income)
-print("Average Change: $",average_change)
-print("Greatest Increase in Profits:",max_increase_date,"$",max_increase)
-print("Greatest Decrease in Profits:",max_decrease_date,"$",max_decrease)
+with open(output_file, "w") as text_file:
+    text_file.write("\nFinancial Analysis" + "\n")
+    text_file.write("\n------------------------------")
+    text_file.write("\nTotal Months: " + str(months) + "\n")
+    text_file.write("Total: $" + str(total_income) + "\n")
+    text_file.write("Average Change: $" + str(average_change) + "\n")
+    text_file.write("Greatest Increase in Profits: " + max_increase_date + " $" + str(max_increase) + "\n")
+    text_file.write("Greatest Decrease in Profits: " + max_decrease_date + " $" + str(max_decrease) + "\n")
+
+print("please find data results with attached 'analysis.txt' file")

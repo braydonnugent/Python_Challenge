@@ -61,7 +61,7 @@ with open(election_csv, 'r') as csv_file:   #making the data source a readable c
         elif lead == cand_c_votes:
             winner = cand_c
         
-    #create percentage value for each candidates votes & round down to 2 decimal places for appropriate display of data
+    #create corresponding percentage variables for each candidates total votes & round totals to 2 decimal places for appropriate display of data
 
     cand_a_percent = cand_a_votes/total_votes*100
     cand_b_percent = cand_b_votes/total_votes*100
@@ -70,21 +70,18 @@ with open(election_csv, 'r') as csv_file:   #making the data source a readable c
     cand_b_percent = round(cand_b_percent,2)
     cand_c_percent = round(cand_c_percent,2)
    
-    #final display template
+#create data display template & have it print on attached 'analysis.txt' file. Print note to notify code runner what has happened.
 
-    print("Election Results")
-    print("")
-    print("------------------")
-    print("Total Votes:",total_votes)
-    print("")
-    print("------------------")
-    print("")
-    print(f"{cand_a} {cand_a_percent}% ({cand_a_votes})")
-    print(f"{cand_b} {cand_b_percent}% ({cand_b_votes})")
-    print(f"{cand_c} {cand_c_percent}% ({cand_c_votes})")
-    print("")
-    print("------------------")
-    print("")
-    print("Winner:", winner)
-    print("")
-    print("------------------")
+output_file = "analysis.txt"
+with open(output_file, "w") as text_file:
+    text_file.write("Election Results\n")
+    text_file.write("\n------------------------------\n")
+    text_file.write(f"Total Votes: {total_votes}\n")
+    text_file.write(f"{cand_a} {cand_a_percent}% ({cand_a_votes})\n")
+    text_file.write(f"{cand_b} {cand_b_percent}% ({cand_b_votes})\n")
+    text_file.write(f"{cand_c} {cand_c_percent}% ({cand_c_votes})\n")
+    text_file.write("\n------------------------------\n")
+    text_file.write(f"Winner: {winner}\n")
+    text_file.write("\n------------------------------\n")
+
+print("please find data results with attached 'analysis.txt' file")
