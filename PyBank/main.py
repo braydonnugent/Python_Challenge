@@ -10,8 +10,7 @@ with open(budget_csv_path, 'r') as csv_file:    #making the data source a readab
     months = 1     #initialising months variable as 1 (because the loop using this variable skips the first row of the data source)
     header = next(budget_csv)   #creating variable to store header row as next row
     first_row = next(budget_csv)    #creating variable to store data source first data row (as reference for following variables)
-    total_income = 0   #initialising total variable as 0
-    total_income += int(first_row[1])  #COUNTING variable to store values of data values in the 2nd column of data source
+    total_income = int(first_row[1])   #initialising total variable as first row (as it will be skipped in the loop)
     previous_value = int(first_row[1])  #TRACKING variable to store data values to manipulate data
     max_increase = int(first_row[1])    #TRACKING variable to store greatest increase in data
     max_decrease = int(first_row[1])    #TRACKING variable to store greatest decrease in data
@@ -23,6 +22,7 @@ with open(budget_csv_path, 'r') as csv_file:    #making the data source a readab
         current_value = int(row[1])
         change = current_value - previous_value
         total_change += change
+        total_income += int(row[1])  
         previous_value = int(row[1])
 
         #if function stored within for loop to properly track max increase & decrease in profit (change variable) values.
@@ -50,4 +50,11 @@ with open(output_file, "w") as text_file:
     text_file.write("Greatest Increase in Profits: " + max_increase_date + " $" + str(max_increase) + "\n")
     text_file.write("Greatest Decrease in Profits: " + max_decrease_date + " $" + str(max_decrease) + "\n")
 
-print("please find data results with attached 'analysis.txt' file")
+print("Financial Analysis")
+print("")
+print("------------------------------")
+print("")
+print("Total: $" + str(total_income))
+print("Average Change: $" + str(average_change))
+print("Greatest Increase in Profits: " + max_increase_date + " $" + str(max_increase))
+print("Greatest Decrease in Profits: " + max_decrease_date + " $" + str(max_decrease))

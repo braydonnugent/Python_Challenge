@@ -84,4 +84,12 @@ with open(output_file, "w") as text_file:
     text_file.write(f"Winner: {winner}\n")
     text_file.write("\n------------------------------\n")
 
-print("please find data results with attached 'analysis.txt' file")
+print("Election Results\n")
+print("------------------------------")
+print(f"Total Votes: {total_votes}\n")
+print(f"{cand_a} {cand_a_percent}% ({cand_a_votes})\n")
+print(f"{cand_b} {cand_b_percent}% ({cand_b_votes})\n")
+print(f"{cand_c} {cand_c_percent}% ({cand_c_votes})\n")
+print("------------------------------")
+print(f"Winner: {winner}\n")
+print("------------------------------")
